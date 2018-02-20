@@ -3,6 +3,7 @@ import {loadBackgroundSprites} from './sprites.js';
 import Compositor from './compositor.js';
 import {createBackgroundLayer, createSpriteLayer} from './layers.js';
 import {createMario} from './entities.js';
+import Timer from './timer.js';
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
@@ -23,12 +24,13 @@ Promise.all([
 	const spriteLayer = createSpriteLayer(mario);
 	comp.layers.push(spriteLayer);
 
-	function update(){
+	const timer = new Timer(1/60);
+
+	timer.update = function update(deltaTime){
 		comp.draw(context);
 		mario.update();
 		mario.vel.y += gravity;
-		requestAnimationFrame(update);
 	}
 
-	update();
+	timer.start();
 });
