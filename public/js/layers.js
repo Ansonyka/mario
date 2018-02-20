@@ -22,3 +22,9 @@ function drawBackground(background, context, sprites){
 		}
 	});
 }
+
+export function createSpriteLayer(entyty){
+	return function drawSpriteLayer(context){
+		entyty.draw(context);
+	}
+}

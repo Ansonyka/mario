@@ -2,7 +2,7 @@ import Entity from './entity.js';
 import {loadMarioSprite} from './sprites.js';
 
 export function createMario(){
-	loadMarioSprite()
+	return loadMarioSprite()
 	.then ( sprite => {
 		const mario = new Entity();
 		mario.pos.set(64, 180);
